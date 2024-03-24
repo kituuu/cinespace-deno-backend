@@ -1,0 +1,19 @@
+version: '1.0'
+
+networks:
+  cinespace_network:
+    name: cinespace_network
+    driver: bridge
+    external: true
+
+services:
+  deno_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.deno
+    container_name: cine-deno-backend
+    image: cine-deno
+    expose:
+      - 8001
+    networks:
+      - cinespace_network
